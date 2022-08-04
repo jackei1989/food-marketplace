@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"foodmarketplace/config"
 	"foodmarketplace/database"
+	"foodmarketplace/routes"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
@@ -11,5 +12,8 @@ func main() {
 	config.SetConfig()
 	database.Connect()
 
-	fmt.Println("Server is runnig ...")
+	e := echo.New()
+	routes.SetRoutes(e)
+	e.Start(config.AppConfig.Port)
+
 }

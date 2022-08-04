@@ -1,20 +1,19 @@
 package config
 
 import (
+	"github.com/joho/godotenv"
 	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 type config struct {
-	Port        string `json:"port"`
-	DB_HOST     string `json:"db_host"`
-	DB_PROT     string `json:"db_prot"`
-	DB_PSSSWORD string `json:"db_password"`
-	DB_USER     string `json:"db_user"`
-	DB_NAME     string `json:"db_name"`
-	DB_TIMEZONE string `json:"db_timezone"`
+	Port       string `json:"port"`
+	DbHost     string `json:"db_host"`
+	DbProt     string `json:"db_prot"`
+	DbPsssword string `json:"db_password"`
+	DbUser     string `json:"db_user"`
+	DbName     string `json:"db_name"`
+	DbTimezone string `json:"db_timezone"`
 }
 
 var AppConfig config
@@ -26,11 +25,11 @@ func SetConfig() {
 		log.Fatal(err)
 	}
 
-	AppConfig.Port = os.Getenv("Port")
-	AppConfig.DB_HOST = os.Getenv("DB_HOST")
-	AppConfig.DB_USER = os.Getenv("DB_USER")
-	AppConfig.DB_PROT = os.Getenv("DB_PORT")
-	AppConfig.DB_PSSSWORD = os.Getenv("DB_PASSWORD")
-	AppConfig.DB_NAME = os.Getenv("DB_NAME")
-	AppConfig.DB_TIMEZONE = os.Getenv("DB_TIMEZONE")
+	AppConfig.Port = os.Getenv("PORT")
+	AppConfig.DbHost = os.Getenv("DB_HOST")
+	AppConfig.DbUser = os.Getenv("DB_USER")
+	AppConfig.DbProt = os.Getenv("DB_PORT")
+	AppConfig.DbPsssword = os.Getenv("DB_PASSWORD")
+	AppConfig.DbName = os.Getenv("DB_NAME")
+	AppConfig.DbTimezone = os.Getenv("DB_TIMEZONE")
 }
